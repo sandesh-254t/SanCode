@@ -8,6 +8,10 @@ app = Flask(__name__)
 # ===============================
 # LANDING PAGE
 # ===============================
+@app.route("/editor")
+def editor():
+    return render_template("index.html")
+
 @app.route("/")
 def landing():
     return render_template("landing.html")
