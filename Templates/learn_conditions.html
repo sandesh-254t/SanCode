@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Conditions - SanCode</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ========== GLOBAL ========== */
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: 0.4s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+}
+
+/* ========== THEME ========== */
+body.dark {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+}
+
+/* ========== BLOBS ========== */
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle at 30% 30%, #4ade80, transparent 70%);
+    filter: blur(120px);
+    opacity: 0.4;
+    animation: float 10s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+.blob2 {
+    right: -150px;
+    top: 200px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    from { transform: translateY(-30px); }
+    to { transform: translateY(30px); }
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.nav-center {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-center a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+}
+
+.nav-center a:hover {
+    color: #4ade80;
+    transition: 0.3s;
+}
+
+.nav-cta {
+    padding: 8px 20px;
+    border-radius: 20px;
+    background: #4ade80;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ========== CONTENT ========== */
+.container {
+    padding: 160px 20px 80px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+.code {
+    background: rgba(0,0,0,0.4);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-family: monospace;
+    display: inline-block;
+    margin-top: 10px;
+    white-space: pre-wrap;
+}
+
+.output {
+    margin-top: 15px;
+    background: rgba(0,0,0,0.6);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-family: monospace;
+}
+
+</style>
+</head>
+
+<body class="dark">
+
+<div class="blob"></div>
+<div class="blob blob2"></div>
+
+<header class="navbar">
+    <div class="logo">SanCode</div>
+    <nav class="nav-center">
+        <a href="/">Home</a>
+        <a href="/learn">Learn</a>
+        <a href="/docs">Docs</a>
+        <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta" onclick="window.location.href='/ide'">
+        Launch IDE
+    </div>
+</header>
+
+<div class="container">
+    <h1>Conditions</h1>
+
+    <div class="card">
+
+        <p>SanCode uses readable conditions.</p>
+
+        <h2>Syntax</h2>
+        <div class="code">
+when x greater 5
+        </div>
+
+        <h2>Example</h2>
+        <div class="code">
+when x greater 5
+    say "Big"
+        </div>
+
+        <p>This will display (if x is 6):</p>
+
+        <div class="output">
+Big
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SanCode</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ========== GLOBAL ========== */
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: 0.4s ease;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+/* ========== THEME ========== */
+body.dark {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+}
+
+body.light {
+    background: linear-gradient(135deg, #e6f4ea, #d0f0d8);
+    color: #1e2d24;
+}
+
+/* ========== ABSTRACT BLOBS ========== */
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle at 30% 30%, #4ade80, transparent 70%);
+    filter: blur(120px);
+    opacity: 0.4;
+    animation: float 10s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+.blob2 {
+    right: -150px;
+    top: 200px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    from { transform: translateY(-30px); }
+    to { transform: translateY(30px); }
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.navbar.shrink {
+    padding: 12px 60px;
+}
+
+body.light .navbar {
+    background: rgba(255,255,255,0.5);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* NAV LINKS */
+.nav-center {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-center a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-center a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #4ade80;
+    transition: 0.3s;
+}
+
+.nav-center a:hover::after {
+    width: 100%;
+}
+
+/* CTA BUTTON */
+.nav-cta {
+    padding: 8px 20px;
+    border-radius: 20px;
+    background: #4ade80;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+}
+
+/* ========== PREMIUM TOGGLE ========== */
+.toggle {
+    width: 65px;
+    height: 30px;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: 0.4s ease;
+    overflow: hidden;
+}
+
+.toggle-circle {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+    left: 4px;
+    transition: 0.4s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.dark .toggle {
+    background: rgba(74, 222, 128, 0.25);
+}
+
+.dark .toggle-circle {
+    transform: translateX(32px);
+}
+
+/* ========== HERO ========== */
+.hero {
+    text-align: center;
+    padding: 180px 20px 100px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    opacity: 0.8;
+    max-width: 600px;
+    margin: auto;
+}
+
+.button {
+    margin-top: 40px;
+    padding: 14px 40px;
+    background: #4ade80;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ========== FEATURES ========== */
+.section {
+    padding: 80px 60px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 30px;
+    width: 280px;
+    transition: 0.4s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* ========== REVEAL ========== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== FOOTER ========== */
+footer {
+    text-align: center;
+    padding: 50px;
+    opacity: 0.6;
+}
+
+</style>
+</head>
+
+<body class="dark">
+
+<div class="blob"></div>
+<div class="blob blob2"></div>
+
+<header class="navbar" id="navbar">
+    <div class="logo">SanCode</div>
+
+    <nav class="nav-center">
+        <a href="/">Home</a>
+        <a href="/#features">Features</a>
+        <a href="/docs">Docs</a>
+        <a href="/learn">Learn</a>
+        <a href="/about">About</a>
+    </nav>
+
+    <div style="display:flex; align-items:center;">
+        <div class="nav-cta" onclick="window.location.href='/ide'">
+            Launch IDE
+        </div>
+
+        <div class="toggle" onclick="toggleTheme()">
+            <div class="toggle-circle"></div>
+        </div>
+    </div>
+</header>
+
+<div class="hero">
+    <h1>Programming in Plain English.</h1>
+    <p>SanCode is an experimental language built by Sandesh.
+    Write logic like you speak. Execute instantly in your browser.</p>
+    <button class="button" onclick="window.location.href='/ide'">
+        Launch IDE
+    </button>
+</div>
+
+<div class="section" id="features">
+    <div class="card reveal">
+        <h3>Readable Syntax</h3>
+        <p>Use English words like when, otherwise, add, greater.</p>
+    </div>
+
+    <div class="card reveal">
+        <h3>Web Based IDE</h3>
+        <p>Run code directly in browser. No setup required.</p>
+    </div>
+
+    <div class="card reveal">
+        <h3>Instant Execution</h3>
+        <p>Run programs immediately in your browser without installing anything.</p>
+    </div>
+
+    <div class="card reveal">
+        <h3>Beginner Friendly</h3>
+        <p>Designed for students who are just starting their programming journey.</p>
+    </div>
+
+    <div class="card reveal">
+        <h3>Fast Performance</h3>
+        <p>Optimized interpreter ensures smooth and quick code execution.</p>
+    </div>
+
+    <div class="card reveal">
+        <h3>Expandable Language</h3>
+        <p>Built with future features and scalability in mind.</p>
+    </div>
+
+    <div class="card reveal">
+        <h3>Minimal & Clean</h3>
+        <p>Distraction-free UI focused purely on logic and learning.</p>
+    </div>
+
+    <div class="card reveal">
+        <h3>Modern UI</h3>
+        <p>Glass design with smooth animations and dual theme.</p>
+    </div>
+</div>
+
+<footer>
+    SanCode © 2026 — Designed by Sandesh
+</footer>
+
+<script>
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+}
+
+function handleScrollEffects() {
+    const navbar = document.getElementById("navbar");
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("shrink");
+    } else {
+        navbar.classList.remove("shrink");
+    }
+
+    const reveals = document.querySelectorAll(".reveal");
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", handleScrollEffects);
+window.addEventListener("load", handleScrollEffects);
+
+</script>
+
+</body>
+</html>

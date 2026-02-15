@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About SanCode</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+}
+
+/* ===== BLOBS ===== */
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle at 30% 30%, #4ade80, transparent 70%);
+    filter: blur(120px);
+    opacity: 0.4;
+    animation: float 10s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+.blob2 {
+    right: -150px;
+    top: 200px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    from { transform: translateY(-30px); }
+    to { transform: translateY(30px); }
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.nav-center {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-center a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-center a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #4ade80;
+    transition: 0.3s;
+}
+
+.nav-center a:hover::after {
+    width: 100%;
+}
+
+/* ===== PAGE CONTENT ===== */
+.container {
+    padding: 160px 60px 80px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.highlight {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="blob"></div>
+<div class="blob blob2"></div>
+
+<header class="navbar">
+    <div class="logo">SanCode</div>
+
+    <nav class="nav-center">
+        <a href="/">Home</a>
+        <a href="/#features">Features</a>
+        <a href="/docs">Docs</a>
+        <a href="/learn">Learn</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+<div class="container">
+
+<h1>About SanCode</h1>
+<p>SanCode is an experimental programming language built with simplicity and clarity in mind.</p>
+
+<div class="card">
+    <h3>Vision</h3>
+    <p>Make programming feel <span class="highlight">natural</span>, readable, and beginner-friendly.</p>
+</div>
+
+<div class="card">
+    <h3>Mission</h3>
+    <p>Remove unnecessary symbols and complexity. Replace them with logic that feels like plain English.</p>
+</div>
+
+<div class="card">
+    <h3>Built By</h3>
+    <p>SanCode was created by <span class="highlight">Sandesh</span> as a step toward simplifying how people learn programming.</p>
+</div>
+
+<div class="card">
+    <h3>Future Goals</h3>
+    <p>Expand SanCode into a fully functional ecosystem with IDE tools, learning systems, and cloud execution.</p>
+</div>
+
+</div>
+
+</body>
+</html>
